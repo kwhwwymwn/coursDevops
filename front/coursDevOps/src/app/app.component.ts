@@ -5,14 +5,10 @@ import { HeaderComponent } from "./components/header/header.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'coursDevOps';
-
-  onSearch(event: any){
-    console.log(event);
-  }
+  title = 'Graine de folie';
 }
