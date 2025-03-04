@@ -3,8 +3,21 @@
     height: 250px;
     width: 250px;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 5%;
-    padding: 20px;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card img {
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.card * {
+    margin: 0;
 }
 
 p{
@@ -12,7 +25,6 @@ p{
 }
 
 .button-37 {
-    margin-top: 50px;
     background-color: #13aa52;
     border: 1px solid #13aa52;
     border-radius: 4px;
