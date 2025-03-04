@@ -16,10 +16,9 @@ import edu.esiea.coursDevOps.repository.CartRepository;
 
 @Service
 public class CartService {
-
+	@Autowired
     private final CartRepository repo;
 
-    @Autowired
     public CartService(CartRepository repo) {
         this.repo = repo;
     }
@@ -27,6 +26,12 @@ public class CartService {
     // Retrieve all carts
     public List<Cart> getAll() {
         return repo.findAll();
+    }
+    
+    // Retrieve a cart by ID
+    public Cart getCartById(int id) throws CartNotFoundException {
+        return repo.findById(id)
+                .orElseThrow(() -> new CartNotFoundException("Cart with ID " + id + " not found."));
     }
 
     // Create a new cart
