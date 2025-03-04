@@ -1,0 +1,25 @@
+services:
+
+  db:
+    image: "mysql:8.0"
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=project_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+
+  springboot:
+    depends_on:
+      - db
+    build: ./back/coursDevOps
+    ports:
+      - 8080:8080
+
+  angular:
+    depends_on:
+      - springboot
+    build: ./front/coursDevOps
+    ports:
+      - 4200:80
