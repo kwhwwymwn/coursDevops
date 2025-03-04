@@ -53,7 +53,7 @@
 .btn:hover .sign {
     width: 30%;
     transition-duration: .3s;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 /* hover effect button's text */
@@ -61,7 +61,6 @@
     opacity: 1;
     width: 70%;
     transition-duration: .3s;
-    padding-right: 10px;
 }
 
 /* button click effect*/
@@ -73,13 +72,14 @@
     display: flex;
     justify-content: space-between;
     padding: 8px;
+    padding-bottom: 16px;
     border-bottom: solid lightgrey 1px;
     height: 42px;
 }
 
 .header img {
-    max-width: 100%; /* Ensures the image resizes within the header */
-    max-height: 100%; /* Ensures it doesn't exceed the header height */
-    display: block; /* Removes extra space below the image */
-    object-fit: contain; /* Keeps aspect ratio */
+    max-width: 100%; 
+    max-height: 100%; 
+    display: block; 
+    object-fit: contain;
 }
