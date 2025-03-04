@@ -16,7 +16,8 @@ import edu.esiea.coursDevOps.repository.CartRepository;
 
 @Service
 public class CartService {
-	@Autowired
+
+    @Autowired
     private final CartRepository repo;
 
     public CartService(CartRepository repo) {
