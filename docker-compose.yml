@@ -1,6 +1,6 @@
 services:
 
-  db:
+  mysqldb:
     image: "mysql:8.0"
     ports:
       - 3306:3306
@@ -12,10 +12,14 @@ services:
 
   springboot:
     depends_on:
-      - db
+      - mysqldb
     build: ./back/coursDevOps
     ports:
       - 8080:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/springboot?serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
 
   angular:
     depends_on:
