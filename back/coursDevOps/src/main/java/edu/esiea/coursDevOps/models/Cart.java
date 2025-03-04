@@ -3,17 +3,29 @@ package edu.esiea.coursDevOps.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+
+@Entity
 public class Cart {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int userId;
+	@OneToOne
+	@JoinColumn(name = "userId")
+	private User user;
 	private int quantity;
 	private float totalPrice;
 	private List<Product> products;
 	
-	public Cart(int id, int userId, int quantity, float totalPrice) {
+	public Cart(int id, User user, int quantity, float totalPrice) {
 		super();
 		this.id = id;
-		this.userId = userId;
+		this.user = user;
 		this.quantity = quantity;
 		this.totalPrice = totalPrice;
 		this.products = new ArrayList<>();
@@ -27,12 +39,12 @@ public class Cart {
 		this.id = id;
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public int getQuantity() {
