@@ -17,11 +17,11 @@ public class UserService {
 		this.repo = repo;
 	}
 	
-//	public List<User> getAll(){
-//		return repo.findAll();
-//	}
+	public List<User> getAll(){
+		return repo.findAll();
+	}
 	
-//	public User get(int index) {
-//		return repo.findById(index).orElseThrow(() -> new RuntimeException("User not found"));
-//	}
+	public User get(int index) {
+		return repo.findById(index).orElseThrow(() -> new RuntimeException("User not found"));
+	}
 }
