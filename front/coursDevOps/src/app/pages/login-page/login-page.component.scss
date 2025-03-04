@@ -1,14 +1,26 @@
-.card {
-    background-color: white;
-    height: 250px;
-    width: 250px;
+.input {
+    border: 3px solid #13aa52;
+    padding: 5px;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    font-size: medium;
+    margin-bottom: 30px;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     padding: 20px;
 }
 
-p{
-    font-size: small;
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button-37 {

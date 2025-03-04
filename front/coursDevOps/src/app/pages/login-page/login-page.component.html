@@ -1,0 +1,11 @@
+<div class="login-container">
+    <div class="login">
+        <h1>Connexion</h1>
+        <input placeholder="Identifiant" type="text" class="input">
+        <input placeholder="Mot de passe" [type]="isPasswordVisible ? 'text' : 'password'" class="input">
+        <div>
+            <input type="checkbox" (click)="togglePassword()">Afficher le mot de passe
+        </div>
+        <button class="button-37" role="button"><mat-icon fontIcon="login"></mat-icon> Se connecter</button>
+    </div>
+</div>
