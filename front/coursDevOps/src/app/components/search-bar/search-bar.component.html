@@ -1,0 +1,9 @@
+<div class="wrap">
+    <div class="search">
+        <input type="text" class="searchTerm" placeholder="Rechercher..." [formControl]="searchForm"
+            (keydown)="onKeydown($event)">
+        <button type="submit" class="searchButton" (click)="onBtnClick()">
+            <mat-icon fontIcon="search" fon></mat-icon>
+        </button>
+    </div>
+</div>
