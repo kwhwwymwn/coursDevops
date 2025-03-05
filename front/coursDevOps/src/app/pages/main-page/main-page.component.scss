@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    height: calc(100vh - 90px);
+    padding-top: 8px;
+}
+
+.catalogue {
+    width: 67%;
+    margin-right: 8px;
+}
+
+.aside {
+    border-radius: 12px;
+    background-color: rgba(19, 170, 82, 0.15);
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.2);
+    width: 33%;
+    padding: 8px;
+}
