@@ -29,9 +29,6 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-      # debug
-      - name: debug
-        run: ls ./back/coursDevOps/
       # Run tests
       - name: Build with Maven
       # package = test then jar
