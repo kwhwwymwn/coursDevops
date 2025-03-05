@@ -25,4 +25,12 @@ public class ProductService {
 	public Product get(int index) {
 		return repo.findById(index).orElseThrow(() -> new RuntimeException("Product not found"));
 	}
+	
+	public Product add(Product product) {
+		return repo.save(product);
+	}
+	
+	public void delete(Product product) {
+		repo.delete(product);
+	}
 }
