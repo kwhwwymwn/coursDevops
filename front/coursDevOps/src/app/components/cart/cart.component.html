@@ -1,28 +1,7 @@
 <div class="container">
     <h1>Panier</h1>
     <div class="list">
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
-        <app-cart-item />
+        <app-cart-item *ngFor="let curProduct of products" [product]="curProduct"/>
     </div>
     <button class="button-37" role="button"><mat-icon fontIcon="shopping_cart"></mat-icon><span>Passer la commande</span></button>
 </div>

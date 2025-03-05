@@ -1,15 +1,15 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { Product } from '../../models/product';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, CommonModule],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
-  productName: InputSignal<string> = input<string>('Nom');
-  productBasePrice: InputSignal<number> = input<number>(0);
-  productTva: InputSignal<number> = input<number>(0);
+  @Input() product!: Product;
 }

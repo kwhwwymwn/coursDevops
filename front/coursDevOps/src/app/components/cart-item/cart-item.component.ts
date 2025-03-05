@@ -1,4 +1,5 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { Component, Input} from '@angular/core';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-cart-item',
@@ -8,7 +9,5 @@ import { Component, input, InputSignal } from '@angular/core';
   styleUrl: './cart-item.component.scss'
 })
 export class CartItemComponent {
-  productName: InputSignal<string> = input<string>('Nom');
-  productBasePrice: InputSignal<number> = input<number>(0);
-  productTva: InputSignal<number> = input<number>(0);
+  @Input() product!: Product;
 }

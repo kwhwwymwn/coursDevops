@@ -12,6 +12,6 @@ import { NewProductComponent } from "../../components/new-product/new-product.co
   styleUrl: './main-page.component.scss'
 })
 export class MainPageComponent {
-  userType: UserType = UserType.ADMIN;
+  userType: UserType = UserType.CUSTOMER;
   UserType = UserType;
 }
