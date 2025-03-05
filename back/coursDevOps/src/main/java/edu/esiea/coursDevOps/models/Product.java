@@ -18,6 +18,7 @@ public class Product {
 	private float basePrice;
 	private float tva;
 	
+	public Product() {}
 
 	public Product(int id, String name, String description, String imgUrl, float basePrice, float tva) {
 		super();

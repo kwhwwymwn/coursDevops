@@ -13,6 +13,8 @@ public class User {
 	private String login;
 	private String password;
 	
+	public User() {}
+	
 	public User(int id, String login, String password) {
 		super();
 		this.id = id;

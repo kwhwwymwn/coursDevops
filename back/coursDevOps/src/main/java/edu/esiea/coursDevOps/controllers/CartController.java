@@ -22,9 +22,9 @@ import edu.esiea.coursDevOps.services.CartService;
 @RequestMapping("/carts")
 public class CartController {
 
+    @Autowired
     private final CartService service;
 
-    @Autowired
     public CartController(CartService service) {
         this.service = service;
     }

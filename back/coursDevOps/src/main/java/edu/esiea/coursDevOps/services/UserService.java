@@ -24,4 +24,8 @@ public class UserService {
 	public User get(int index) {
 		return repo.findById(index).orElseThrow(() -> new RuntimeException("User not found"));
 	}
+	
+	public User get(String login){
+		return repo.findByLogin(login).orElseThrow(() -> new RuntimeException("User not found"));
+	}
 }
