@@ -3,11 +3,5 @@
     <app-search-bar/>
 </div>
 <div class="content">
-    <app-product-card/>
-    <app-product-card/>
-    <app-product-card/>
-    <app-product-card/>
-    <app-product-card/>
-    <app-product-card/>
-    <app-product-card/>
+    <app-product-card *ngFor="let curProduct of products" [product]="curProduct"/>
 </div>
