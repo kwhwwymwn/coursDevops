@@ -25,6 +25,9 @@ p{
 }
 
 .button-37 {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     background-color: #13aa52;
     border: 1px solid #13aa52;
     border-radius: 4px;
@@ -38,7 +41,6 @@ p{
     outline: none;
     outline: 0;
     padding: 10px 25px;
-    text-align: center;
     transform: translateY(0);
     transition: transform 150ms, box-shadow 150ms;
     user-select: none;
