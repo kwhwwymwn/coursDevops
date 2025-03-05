@@ -29,7 +29,11 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-
+      # debug
+      - name: debug1
+        run: pwd
+      - name: debug2
+        run: ls
       # Run tests
       - name: Build with Maven
       # package = test then jar
