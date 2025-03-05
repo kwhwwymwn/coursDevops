@@ -1,8 +1,14 @@
 <div class="container">
     <div class="catalogue">
-        <app-catalogue/>
+        <app-catalogue />
     </div>
-    <div class="aside">
-        <app-cart/>
-    </div>
+    @if (userType != UserType.VISITOR) {
+        <div class="aside">
+            @if (userType == UserType.CUSTOMER) {
+                <app-cart />
+            } @else if (userType == UserType.ADMIN) {
+                <app-new-product />
+            }
+        </div>
+    }
 </div>

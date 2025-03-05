@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-products-manager-page',
+  selector: 'app-new-product',
   standalone: true,
   imports: [MatIconModule],
-  templateUrl: './products-manager-page.component.html',
-  styleUrl: './products-manager-page.component.scss'
+  templateUrl: './new-product.component.html',
+  styleUrl: './new-product.component.scss'
 })
 export class ProductsManagerPageComponent {
 
