@@ -26,7 +26,7 @@ public class UserControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private UserService service;
+	private UserService service;
 
     @Test
     void testGetOne() throws Exception {
