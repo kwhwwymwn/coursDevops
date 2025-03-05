@@ -1,23 +1,14 @@
 export class Product {
-    private _id!: number;
     private _basePrice!: number;
     private _tva!: number;
     private _name!: string;
     private _imgUrl!: string;
 
-    constructor(id: number, basePrice: number, tva: number, name: string, imgUrl: string){
-        this._id = id;
+    constructor(basePrice: number, tva: number, name: string, imgUrl: string){
         this._basePrice = basePrice;
         this._tva = tva;
         this._name = name;
         this._imgUrl = imgUrl;
-    }
-
-    public get id(): number {
-        return this._id;
-    }
-    public set id(value: number) {
-        this._id = value;
     }
 
     public get basePrice(): number {

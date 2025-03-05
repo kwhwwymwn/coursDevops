@@ -1,20 +1,21 @@
 <div class="new-container">
     <div class="new">
         <h1>Ajouter un produit au catalogue :</h1>
-        <form>
+        <p style="color: red;">{{errorMessage}}</p>
+        <form [formGroup]="newProductForm" (ngSubmit)="onSubmit()">
             <label for="name">Nom du produit :</label>
-            <input type="text" name="name" class="input">
+            <input type="text" name="name" class="input" formControlName="name">
             <br>
             <label for="price">Prix unitaire :</label>
-            <input type="number" name="price" class="input">
+            <input type="number" name="price" class="input" formControlName="price">
             <br>
             <label for="tva">Montant de la TVA :</label>
-            <input type="number" name="tva" class="input">
+            <input type="number" name="tva" class="input" formControlName="tva">
             <br>
             <label for="image">URL de l'image :</label>
-            <input type="text" name="image" class="input">
+            <input type="text" name="image" class="input" formControlName="image">
             <br>
-            <button type="submit" class="button-37" role="button"><mat-icon fontIcon="save"></mat-icon> Enregistrer</button>
+            <button class="button-37" role="button"><mat-icon fontIcon="save"></mat-icon> Enregistrer</button>
         </form>
     </div>
 </div>
