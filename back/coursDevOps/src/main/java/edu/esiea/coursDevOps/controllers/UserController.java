@@ -3,9 +3,12 @@ package edu.esiea.coursDevOps.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,5 +39,11 @@ public class UserController {
 	}
 
 	
-	//TODO login
+	@PostMapping("/login")
+	public ResponseEntity<?> postMethodName(@RequestBody User user) {
+		User TrueUser = service.get(user.getLogin());
+		if (TrueUser.getPassword().equals(user.getPassword()))
+			return ResponseEntity.ok().build();
+		return ResponseEntity.status(400).build(); //Bad Request
+	}
 }
