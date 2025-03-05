@@ -1,6 +1,9 @@
 package edu.esiea.coursDevOps.controllers;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +17,6 @@ import edu.esiea.coursDevOps.exceptions.ProductNotFoundException;
 import edu.esiea.coursDevOps.models.Cart;
 import edu.esiea.coursDevOps.models.Product;
 import edu.esiea.coursDevOps.services.CartService;
-
-
 
 @RestController
 @RequestMapping("/carts")
@@ -40,7 +41,7 @@ public class CartController {
         Cart createdCart = service.createCart(cart.getUser(), cart.getQuantity(), cart.getTotalPrice());
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCart);
     }
-
+    
     // Update an existing cart
     @PutMapping("/{id}")
     public ResponseEntity<Cart> updateCart(@PathVariable int id, @Valid @RequestBody Cart cart)
@@ -69,17 +70,6 @@ public class CartController {
     public ResponseEntity<Cart> removeProductFromCart(@PathVariable int cartId, @Valid @RequestBody Product product)
             throws CartNotFoundException, ProductNotFoundException {
         service.removeProductFromCart(cartId, product);
-        return ResponseEntity.ok(service.getCartById(cartId)); // Return the updated cart
-    }
-
-    // Exception handling
-    @ExceptionHandler({CartNotFoundException.class, ProductNotFoundException.class})
-    public ResponseEntity<String> handleNotFoundException(Exception e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-    }
-
-    @ExceptionHandler(InvalidInputException.class)
-    public ResponseEntity<String> handleInvalidInputException(InvalidInputException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        return ResponseEntity.ok(service.getCartById(cartId));
     }
 }

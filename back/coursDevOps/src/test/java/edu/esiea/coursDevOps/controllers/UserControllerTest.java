@@ -25,7 +25,8 @@ public class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @SuppressWarnings("removal")
+	@MockBean
 	private UserService service;
 
     @Test
