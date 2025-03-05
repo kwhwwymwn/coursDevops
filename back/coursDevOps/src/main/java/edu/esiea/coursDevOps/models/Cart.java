@@ -16,26 +16,34 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Cart {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@OneToOne
-	@JoinColumn(name = "userId")
-	private User user;
-	private int quantity;
-	private float totalPrice;
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinTable(name = "CartsProducts", joinColumns = @JoinColumn(name = "cartId"), inverseJoinColumns = @JoinColumn(name = "productId"))
-	private List<Product> products;
-	
-	public Cart(int id, User user, int quantity, float totalPrice) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.quantity = quantity;
-		this.totalPrice = totalPrice;
-		this.products = new ArrayList<>();
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @OneToOne
+    @JoinColumn(name = "userId")
+    private User user;
+
+    private int quantity;
+    private float totalPrice;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+    @JoinTable(name = "CartsProducts", joinColumns = @JoinColumn(name = "cartId"), inverseJoinColumns = @JoinColumn(name = "productId"))
+    private List<Product> products;
+
+    // No-args constructor (required for Jackson)
+    public Cart() {
+        this.products = new ArrayList<>();
+    }
+
+    // Existing constructor
+    public Cart(int id, User user, int quantity, float totalPrice) {
+        this.id = id;
+        this.user = user;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.products = new ArrayList<>();
+    }
 
 	public int getId() {
 		return id;

@@ -1,5 +1,7 @@
 package edu.esiea.coursDevOps.models;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -87,4 +89,22 @@ public class Product {
 	public void setTva(float tva) {
 		this.tva = tva;
 	}
+	
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id &&
+                Float.compare(product.basePrice, basePrice) == 0 &&
+                Float.compare(product.tva, tva) == 0 &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(description, product.description) &&
+                Objects.equals(imgUrl, product.imgUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, imgUrl, basePrice, tva);
+    }
 }
