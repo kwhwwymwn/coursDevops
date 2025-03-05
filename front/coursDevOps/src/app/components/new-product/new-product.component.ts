@@ -8,6 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './new-product.component.html',
   styleUrl: './new-product.component.scss'
 })
-export class ProductsManagerPageComponent {
-
+export class NewProductComponent {
+  
 }
