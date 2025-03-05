@@ -44,23 +44,36 @@ public class CartService {
         return repo.save(cart);
     }
 
-    // Update an existing cart
+ // Update an existing cart
     public Cart updateCart(int id, User user, int quantity, float totalPrice) throws CartNotFoundException, InvalidInputException {
-        if (quantity < 0 || totalPrice < 0) {
-            throw new InvalidInputException("Quantity and total price must be non-negative.");
+        // Validate input parameters
+        if (quantity < 0) {
+            throw new InvalidInputException("Quantity must be non-negative.");
         }
+        if (totalPrice < 0) {
+            throw new InvalidInputException("Total price must be non-negative.");
+        }
+        if (user == null) {
+            throw new InvalidInputException("User cannot be null.");
+        }
+
+        // Check if the cart exists
         Optional<Cart> existingCart = repo.findById(id);
         if (existingCart.isPresent()) {
             Cart cart = existingCart.get();
+
+            // Update cart fields
             cart.setUser(user);
             cart.setQuantity(quantity);
             cart.setTotalPrice(totalPrice);
+
+            // Save and return the updated cart
             return repo.save(cart);
         } else {
+            // Throw exception if cart is not found
             throw new CartNotFoundException("Cart with ID " + id + " not found.");
         }
     }
-
     // Delete a cart by ID
     public void deleteCart(int id) throws CartNotFoundException {
         Optional<Cart> existingCart = repo.findById(id);

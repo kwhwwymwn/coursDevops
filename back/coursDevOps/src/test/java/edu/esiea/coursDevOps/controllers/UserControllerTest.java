@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.MediaType;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -27,13 +26,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.esiea.coursDevOps.models.User;
 import edu.esiea.coursDevOps.services.UserService;
 
-
-
-
-@WebMvcTest(UserController.class) 
+@WebMvcTest(UserController.class)
 @ExtendWith(MockitoExtension.class)
 public class UserControllerTest {
-
     @Autowired
     private MockMvc mockMvc;
 
@@ -42,18 +37,18 @@ public class UserControllerTest {
 
     @Test
     void testGetOne() throws Exception {
-        // Simuler la réponse du service
-    	User mockedUser = new User(1,"login", "password");
+        // Simulate service response
+        User mockedUser = new User(1, "login", "password");
         when(service.get(1)).thenReturn(mockedUser);
 
-        // Exécuter la requête GET
+        // Perform GET request
         mockMvc.perform(get("/users/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(mockedUser.getId()))
                 .andExpect(jsonPath("$.login").value(mockedUser.getLogin()));
 
-        // Vérifier que la méthode du service a été appelée une fois
+        // Verify service method was called once
         verify(service, times(1)).get(1);
     }
 
