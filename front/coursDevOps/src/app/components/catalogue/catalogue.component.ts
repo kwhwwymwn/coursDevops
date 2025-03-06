@@ -15,8 +15,11 @@ import { UserType } from '../../models/enum/user-type';
 })
 export class CatalogueComponent {
   products: Product[] = [
-    new Product(19.99, 0.2, "Graine de Lune", "https://www.airzen.fr/wp-content/uploads/2022/07/AdobeStock_117893212-scaled.jpeg")
+    new Product(19.99, 0.2, "Graine de Lune", "https://www.airzen.fr/wp-content/uploads/2022/07/AdobeStock_117893212-scaled.jpeg"),
+    new Product(24.99, 0.4, "Huile de fleur", "https://www.promessedefleurs.com/blogwp/wp-content/uploads/2022/05/huile-Photo-a-la-une.jpg"),
+    new Product(11999.99, 4.2, "Arbre à billets", "https://lh4.googleusercontent.com/proxy/-L_CPGWPlNM8gtuslFIltMJPAI0ib67UP1_qrpaqyf16MtYvnedoOOS9PpB_YEA7k-c2nclmYGTNWz1xRO8T7ZyXAv7rJa0"),
   ];
+  displayedProducts: Product[] = this.products;
 
   @Input() userType!: UserType;
 
@@ -41,5 +44,9 @@ export class CatalogueComponent {
         }        
       }
     })
+  }
+
+  protected onSearch(event: string){
+    this.displayedProducts = this.products.filter(value => value.name.toLowerCase().includes(event.toLowerCase()))
   }
 }

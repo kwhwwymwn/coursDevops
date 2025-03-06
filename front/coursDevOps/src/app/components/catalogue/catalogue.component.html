@@ -1,7 +1,7 @@
 <div class="section-header">
     <h1>Catalogue</h1>
-    <app-search-bar/>
+    <app-search-bar (searchValue)="onSearch($event)"/>
 </div>
 <div class="content">
-    <app-product-card [userType]="userType" [(removeProductSignal)]="removeProductSignal" [(addProductSignal)]="addProductSignal" *ngFor="let curProduct of products" [product]="curProduct"/>
+    <app-product-card [userType]="userType" [(removeProductSignal)]="removeProductSignal" [(addProductSignal)]="addProductSignal" *ngFor="let curProduct of displayedProducts" [product]="curProduct"/>
 </div>
