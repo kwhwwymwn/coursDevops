@@ -5,5 +5,5 @@
         <h3>{{product.basePrice}}€</h3>
         <p>Dont {{product.tva}}€ de TVA</p>
     </div>
-    <button class="button-37" role="button"><mat-icon fontIcon="shopping_cart"></mat-icon><span>Ajouter au panier</span></button>
+    <button (click)="onAddToCartClick()" class="button-37" role="button"><mat-icon fontIcon="shopping_cart"></mat-icon><span>Ajouter au panier</span></button>
 </div>

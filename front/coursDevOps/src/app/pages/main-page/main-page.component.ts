@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, model, ModelSignal, OnInit } from '@angular/core';
 import { CatalogueComponent } from "../../components/catalogue/catalogue.component";
 import { CartComponent } from "../../components/cart/cart.component";
 import { UserType } from '../../models/enum/user-type';
@@ -14,4 +14,6 @@ import { NewProductComponent } from "../../components/new-product/new-product.co
 export class MainPageComponent {
   userType: UserType = UserType.CUSTOMER;
   UserType = UserType;
+
+  addProductSignal: ModelSignal<any> = model()
 }

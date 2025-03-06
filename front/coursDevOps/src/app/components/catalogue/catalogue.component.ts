@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, model, ModelSignal, OnInit } from '@angular/core';
 import { SearchBarComponent } from "../search-bar/search-bar.component";
 import { ProductCardComponent } from "../product-card/product-card.component";
 import { Product } from '../../models/product';
@@ -27,4 +27,6 @@ export class CatalogueComponent {
     new Product(350.00, 5, "Singing Sunflower", "https://example.com/singing-sunflower.jpg"),
     new Product(174.49, 5, "Cloud Berry", "https://example.com/cloud-berry.jpg")
   ];
+
+  addProductSignal: ModelSignal<any> = model()
 }

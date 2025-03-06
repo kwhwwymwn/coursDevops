@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, model, ModelSignal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Product } from '../../models/product';
 import { CommonModule } from '@angular/common';
@@ -12,4 +12,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductCardComponent {
   @Input() product!: Product;
+
+  addProductSignal: ModelSignal<any> = model(this.product)
+
+  onAddToCartClick() {
+    this.addProductSignal.set(this.product);
+  }
 }
