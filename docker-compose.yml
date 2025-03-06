@@ -7,10 +7,15 @@ services:
     volumes: 
       - crazy-mysql-data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}
-      - MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }}
-      - MYSQL_USER=${{ secrets.MYSQL_USER }}
-      - MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}
+      - MYSQL_ROOT_PASSWORD=/run/secrets/MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=/run/secrets/MYSQL_DATABASE
+      - MYSQL_USER=/run/secrets/MYSQL_USER
+      - MYSQL_PASSWORD=/run/secrets/MYSQL_PASSWORD
+    secrets:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -24,9 +29,13 @@ services:
     ports:
       - 8080:8080
     environment:
-      SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
-      SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
-      SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
+      SPRING_DATASOURCE_URL: /run/secrets/SPRING_DATASOURCE_URL
+      SPRING_DATASOURCE_USERNAME: /run/secrets/SPRING_DATASOURCE_USERNAME
+      SPRING_DATASOURCE_PASSWORD: /run/secrets/SPRING_DATASOURCE_PASSWORD
+    secrets:
+      - SPRING_DATASOURCE_URL
+      - SPRING_DATASOURCE_USERNAME
+      - SPRING_DATASOURCE_PASSWORD
     healthcheck: 
       test: "curl http://localhost:8080/" 
       interval: 5s  
@@ -41,5 +50,23 @@ services:
     ports:
       - 80:4200
 
+
+secrets:
+   MYSQL_ROOT_PASSWORD:
+     file: MYSQL_ROOT_PASSWORD.txt
+   MYSQL_DATABASE:
+     file: MYSQL_DATABASE.txt
+   MYSQL_USER:
+     file: MYSQL_USER.txt
+   MYSQL_PASSWORD:
+     file: MYSQL_PASSWORD.txt
+   SPRING_DATASOURCE_URL:
+     file: SPRING_DATASOURCE_URL.txt
+   SPRING_DATASOURCE_USERNAME:
+     file: SPRING_DATASOURCE_USERNAME.txt
+   SPRING_DATASOURCE_PASSWORD:
+     file: SPRING_DATASOURCE_PASSWORD.txt
+
 volumes:
   crazy-mysql-data:
+
