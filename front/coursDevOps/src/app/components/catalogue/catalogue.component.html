@@ -3,5 +3,5 @@
     <app-search-bar/>
 </div>
 <div class="content">
-    <app-product-card [(addProductSignal)]="addProductSignal" *ngFor="let curProduct of products" [product]="curProduct"/>
+    <app-product-card [(removeProductSignal)]="removeProductSignal" [(addProductSignal)]="addProductSignal" *ngFor="let curProduct of products" [product]="curProduct"/>
 </div>
