@@ -42,4 +42,4 @@ services:
       - 80:4200
 
 volumes:
-  crazy-mysql-data
+  crazy-mysql-data:
