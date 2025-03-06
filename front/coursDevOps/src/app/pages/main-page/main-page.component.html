@@ -1,6 +1,6 @@
 <div class="container">
     <div class="catalogue">
-        <app-catalogue [(addProductSignal)]="addProductSignal" [(createProductSignal)]="createProductSignal"/>
+        <app-catalogue [userType]="userType" [(addProductSignal)]="addProductSignal" [(createProductSignal)]="createProductSignal"/>
     </div>
     @if (userType != UserType.VISITOR) {
         <div class="aside">

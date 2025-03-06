@@ -12,9 +12,10 @@ import { UserType } from '../../models/enum/user-type';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
-  userType: UserType = UserType.ADMIN;
   UserType = UserType;
+
   @Input() product!: Product;
+  @Input() userType!: UserType;
 
   addProductSignal: ModelSignal<any> = model(this.product)
   removeProductSignal: ModelSignal<any> = model(this.product)

@@ -1,8 +1,9 @@
-import { Component, effect, model, ModelSignal, OnInit } from '@angular/core';
+import { Component, effect, Input, model, ModelSignal } from '@angular/core';
 import { SearchBarComponent } from "../search-bar/search-bar.component";
 import { ProductCardComponent } from "../product-card/product-card.component";
 import { Product } from '../../models/product';
 import { CommonModule } from '@angular/common';
+import { UserType } from '../../models/enum/user-type';
 
 
 @Component({
@@ -13,7 +14,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './catalogue.component.scss'
 })
 export class CatalogueComponent {
-  products: Product[] = [];
+  products: Product[] = [
+    new Product(19.99, 0.2, "Graine de Lune", "https://www.airzen.fr/wp-content/uploads/2022/07/AdobeStock_117893212-scaled.jpeg")
+  ];
+
+  @Input() userType!: UserType;
 
   addProductSignal: ModelSignal<any> = model()
   removeProductSignal: ModelSignal<any> = model()
