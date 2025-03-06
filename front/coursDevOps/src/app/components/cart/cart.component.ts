@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect, model, ModelSignal, OnInit } from '@angular/core';
 import { CartItemComponent } from "../cart-item/cart-item.component";
 import { MatIconModule } from '@angular/material/icon';
 import { Product } from '../../models/product';
@@ -12,14 +12,27 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent {
-  products: Product[] = [
-    new Product(149.49, 5, "Popcorn Seed", "https://example.com/popcorn-seed.jpg"),
-    new Product(149.49, 5, "Popcorn Seed", "https://example.com/popcorn-seed.jpg"),
-    new Product(259.99, 5, "Smartphone Tree", "https://example.com/smartphone-tree.jpg"),
-    new Product(187.75, 5, "Pizza Shrub", "https://example.com/pizza-shrub.jpg"),
-    new Product(300.00, 5, "Golden Leaf Plant", "https://example.com/golden-leaf.jpg"),
-    new Product(300.00, 5, "Golden Leaf Plant", "https://example.com/golden-leaf.jpg"),
-    new Product(300.00, 5, "Golden Leaf Plant", "https://example.com/golden-leaf.jpg"),
-    new Product(174.49, 5, "Cloud Berry", "https://example.com/cloud-berry.jpg")
-  ];
+  products: Product[] = [];
+
+  addProductSignal: ModelSignal<any> = model()
+  removeProductSignal: ModelSignal<any> = model()
+
+  constructor() {
+    effect(() => {
+      const productToAdd = this.addProductSignal();
+      if (productToAdd) {
+        this.products.push(productToAdd);
+      }
+    });
+
+    effect(() => {
+      const productToRemove = this.removeProductSignal();
+      if (productToRemove) {
+        const index = this.products.indexOf(productToRemove, 0);
+        if (index > -1) {
+          this.products.splice(index, 1);
+        }        
+      }
+    })
+  }
 }

@@ -1,13 +1,13 @@
 <div class="container">
     <div class="catalogue">
-        <app-catalogue />
+        <app-catalogue [(addProductSignal)]="addProductSignal" [(createProductSignal)]="createProductSignal"/>
     </div>
     @if (userType != UserType.VISITOR) {
         <div class="aside">
             @if (userType == UserType.CUSTOMER) {
-                <app-cart />
+                <app-cart [(addProductSignal)]="addProductSignal"/>
             } @else if (userType == UserType.ADMIN) {
-                <app-new-product />
+                <app-new-product [(createProductSignal)]="createProductSignal"/>
             }
         </div>
     }

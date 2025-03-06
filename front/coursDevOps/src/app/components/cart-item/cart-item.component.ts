@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, model, ModelSignal } from '@angular/core';
 import { Product } from '../../models/product';
 
 @Component({
@@ -10,4 +10,10 @@ import { Product } from '../../models/product';
 })
 export class CartItemComponent {
   @Input() product!: Product;
+
+  removeProductSignal: ModelSignal<any> = model(this.product)
+
+  onRemoveFromCartClick() {
+    this.removeProductSignal.set(this.product);
+  }
 }
