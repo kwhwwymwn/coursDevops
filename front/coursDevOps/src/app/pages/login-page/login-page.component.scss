@@ -23,6 +23,11 @@
     align-items: center;
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+}
+
 .button-37 {
     margin-top: 50px;
     background-color: #13aa52;

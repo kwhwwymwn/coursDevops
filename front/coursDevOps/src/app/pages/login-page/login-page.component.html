@@ -1,11 +1,14 @@
 <div class="login-container">
     <div class="login">
         <h1>Connexion</h1>
-        <input placeholder="Identifiant" type="text" class="input">
-        <input placeholder="Mot de passe" [type]="isPasswordVisible ? 'text' : 'password'" class="input">
+        <p style="color: red;">{{errorMessage}}</p>
+        <form [formGroup]="loginForm">
+            <input placeholder="Identifiant" type="text" class="input" formControlName="login">
+            <input placeholder="Mot de passe" [type]="isPasswordVisible ? 'text' : 'password'" class="input" formControlName="password">
+        </form>
         <div>
             <input type="checkbox" (click)="togglePassword()">Afficher le mot de passe
         </div>
-        <button class="button-37" role="button"><mat-icon fontIcon="login"></mat-icon> Se connecter</button>
+        <button class="button-37" role="button" (click)="login()"><mat-icon fontIcon="login"></mat-icon> Se connecter</button>
     </div>
 </div>

@@ -3,6 +3,7 @@ import { CatalogueComponent } from "../../components/catalogue/catalogue.compone
 import { CartComponent } from "../../components/cart/cart.component";
 import { UserType } from '../../models/enum/user-type';
 import { NewProductComponent } from "../../components/new-product/new-product.component";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -12,6 +13,16 @@ import { NewProductComponent } from "../../components/new-product/new-product.co
   styleUrl: './main-page.component.scss'
 })
 export class MainPageComponent {
-  userType: UserType = UserType.CUSTOMER;
+  userType: UserType = UserType.ADMIN;
   UserType = UserType;
+
+  constructor(private route: ActivatedRoute){
+    this.route.queryParamMap.subscribe(value => {
+      if(value.has('userType')){
+        this.userType = Object.values(UserType)[<any>value.get('userType')];
+      } else {
+        this.userType = UserType.VISITOR;
+      }
+    })
+  }
 }
