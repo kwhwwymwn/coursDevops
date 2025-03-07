@@ -15,18 +15,19 @@ def run():
 
     wait = WebDriverWait(driver, timeout=2)
 
-    try :
-        loginBtn = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/app-root/app-header/div/a[2]/button')))
+    try:
+        loginBtn = wait.until(EC.presence_of_element_located((By.XPATH, "//app-header//a[2]/button")))
         loginBtn.click()
         wait.until(EC.url_contains("/login"))
-        assert "/login" in driver.current_url
+        assert "/login" in driver.current_url, "User should be redirected to the login page, but the URL is incorrect."
 
-        homeLink = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/app-root/app-header/div/a[1]')))
+        homeLink = wait.until(EC.presence_of_element_located((By.XPATH, "//app-header//a[1]")))
         homeLink.click()
         wait.until(EC.url_contains("/"))
-        assert "/" in driver.current_url
+        assert "/" in driver.current_url, "User should be redirected to the home page, but the URL is incorrect."
+
     except:
-        assert False
+        assert False, "Test failed due to an unexpected error."
 
     driver.close()
     driver.quit()
