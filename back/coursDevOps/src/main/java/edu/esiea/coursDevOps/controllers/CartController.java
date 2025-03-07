@@ -17,7 +17,7 @@ import edu.esiea.coursDevOps.exceptions.ProductNotFoundException;
 import edu.esiea.coursDevOps.models.Cart;
 import edu.esiea.coursDevOps.models.Product;
 import edu.esiea.coursDevOps.services.CartService;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/carts")
 public class CartController {
