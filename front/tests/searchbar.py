@@ -19,7 +19,7 @@ def run():
     existing_product = "Huile de fleur"
     non_existing_product = "ProduitInexistant"
 
-    # Serching an existing product with key enter
+    # Searching an existing product with key enter
     try:
         search_input = wait.until(EC.presence_of_element_located((By.XPATH, "//app-search-bar//input")))
         search_input.clear()
@@ -47,7 +47,6 @@ def run():
         search_input.send_keys(non_existing_product)
         search_button.click()
 
-        # Check if no product cards are found after the search
         product_cards = driver.find_elements(By.XPATH, "//app-product-card")
         assert len(product_cards) == 0, f"No product should match, but product cards are present after search for '{non_existing_product}'."
 
