@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def run():
-    print("Cart")
+    print("cart")
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument('--no-sandbox')
@@ -17,12 +17,12 @@ def run():
     driver.get("http://localhost:4200")
 
     try :
-        addToCartBtn = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/app-root/app-main-page/div/div/app-catalogue/div[2]/app-product-card[1]/div/button')))
+        addToCartBtn = wait.until(EC.presence_of_element_located((By.XPATH, '//app-product-card[1]//button')))
         addToCartBtn.click()
-        assert len(driver.find_elements(By.TAG_NAME, "app-cart")) == 0
-        assert len(driver.find_elements(By.TAG_NAME, "app-cart-item")) == 0
+        assert len(driver.find_elements(By.TAG_NAME, "app-cart")) == 0, "The cart component should not be present, but it was found."
+        assert len(driver.find_elements(By.TAG_NAME, "app-cart-item")) == 0, "No cart items should be present, but some were found."
     except:
-        assert False, "case visitor"
+        assert False, "Test fail as visitor"
 
 
 
@@ -30,16 +30,16 @@ def run():
     driver.get("http://localhost:4200?userType=2")
 
     try :
-        productCards = wait.until(EC.presence_of_all_elements_located((By.XPATH, "//app-product-card")))
+        productCards = wait.until(EC.presence_of_all_elements_located((By.TAG_NAME, "app-product-card")))
     
         for card in productCards:
             try:
                 addToCartBtn = card.find_element(By.XPATH, ".//button[.//span[text()='Ajouter au panier']]")
-                assert False, "Failed: 'Ajouter au panier' button should not be present for admin users."
+                assert False, "'Ajouter au panier' button should not be present for admin users."
             except:
                 pass
     except:
-        assert False, "case visitor"
+        assert False, "Test fail as admin"
 
 
 
@@ -58,18 +58,18 @@ def run():
         addToCartBtn2.click()
 
         cartItems = wait.until(EC.presence_of_all_elements_located((By.XPATH, "//app-cart-item")))
-        assert len(cartItems) == 2, f"Failed: There should be 2 items in the cart, but there are {len(cartItems)}"
+        assert len(cartItems) == 2, f"There should be 2 items in the cart, but there are {len(cartItems)}"
 
         cartItemTitles = [item.find_element(By.XPATH, ".//h2").text for item in cartItems]
-        assert cardTitle1 in cartItemTitles and cardTitle2 in cartItemTitles, f"Failed: The items in the cart do not match the added products. Expected: {cardTitle1}, {cardTitle2}, found: {cartItemTitles}"
+        assert cardTitle1 in cartItemTitles and cardTitle2 in cartItemTitles, f"The items in the cart do not match the added products. Expected: {cardTitle1}, {cardTitle2}, found: {cartItemTitles}"
 
     except:
-        assert False, "Case customer 1"
+        assert False, "Fail to add to cart as customer"
 
     try:
         cartItems = wait.until(EC.presence_of_all_elements_located((By.XPATH, "//app-cart-item")))
 
-        assert len(cartItems) == 2, f"Failed: There should be 2 items in the cart, but there are {len(cartItems)}"
+        assert len(cartItems) == 2, f"There should be 2 items in the cart, but there are {len(cartItems)}"
 
         itemToRemove = cartItems[0]
         itemTitleToRemove = itemToRemove.find_element(By.XPATH, ".//h2").text
@@ -78,13 +78,13 @@ def run():
         removeBtn.click()
 
         remainingItems = driver.find_elements(By.XPATH, "//app-cart-item")
-        assert len(remainingItems) == 1, f"Failed: The cart should contain 1 item after removal, but there are {len(remainingItems)}."
+        assert len(remainingItems) == 1, f"The cart should contain 1 item after removal, but there are {len(remainingItems)}."
 
         remainingItemTitle = remainingItems[0].find_element(By.XPATH, ".//h2").text
-        assert remainingItemTitle != itemTitleToRemove, f"Failed: The remaining product is the same as the one removed. Removed product: {itemTitleToRemove}, remaining product: {remainingItemTitle}"
+        assert remainingItemTitle != itemTitleToRemove, f"The remaining product is the same as the one removed. Removed product: {itemTitleToRemove}, remaining product: {remainingItemTitle}"
 
     except:
-        assert False, "Case customer 2"
+        assert False, "Fail to remove item from cart as customer"
 
     driver.close()
     driver.quit()

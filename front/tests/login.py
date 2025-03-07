@@ -10,7 +10,7 @@ def run():
     chrome_options.add_argument("--headless")
     chrome_options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(options=chrome_options)
-    driver = webdriver.Chrome()
+    
     driver.get("http://localhost:4200/login")
 
     wait = WebDriverWait(driver, timeout=2)
