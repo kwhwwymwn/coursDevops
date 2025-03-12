@@ -139,8 +139,6 @@ docker-compose up -d
 - Frontend: http://localhost
 - Backend: http://localhost:8080
 
-I'll update the testing section with these specific examples:
-
 ## Testing
 
 ### Backend Testing (Spring Boot)
